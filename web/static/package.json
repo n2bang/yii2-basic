@@ -1,0 +1,21 @@
+{
+  "name": "static",
+  "version": "1.0.0",
+  "description": "learning yii2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "yii2"
+  ],
+  "author": "n2bang",
+  "license": "ISC",
+  "dependencies": {
+    "@samhammer/jquery.zoomer": "^3.1.0",
+    "formstone": "^1.4.16-1",
+    "hammerjs": "^2.0.8",
+    "jquery-mousewheel": "^3.1.13",
+    "jquery-zoom": "^1.7.21"
+  }
+}

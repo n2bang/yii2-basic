@@ -1,0 +1,18 @@
+class_name: AcceptanceTester
+modules:
+    enabled:
+        - \Helper\Acceptance
+        - Asserts
+        #- PhpBrowser:
+        #    url: 'http://basic.local'
+        - WebDriver:
+            url: 'http://basic.local'
+            port: 4444
+            window_size: false
+            browser: chrome
+            capabilities:
+                "goog:chromeOptions": # additional chrome options
+        - Yii2:
+            part: orm
+            entryScript: index-test.php
+            cleanup: false

@@ -12,6 +12,7 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'language' => 'vi-VN',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -55,7 +56,21 @@ $config = [
             'showScriptName' => false,
             'rules' => $rules, 
         ],
-        
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    // 'sourceLanguage' => 'en-US',
+                    // 'basePath' => '@app/messages'
+                ],
+            ],
+        ],
+        'common' => [
+            'class' => 'app\components\Common',
+        ],
+        'api' => [
+            'class' => 'app\components\Api',
+        ],
     ],
     'modules' => [
         'v1' => [

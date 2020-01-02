@@ -14,7 +14,7 @@ use Yii;
  * @property int $created_at
  * @property int $updated_at
  */
-class Projects extends \yii\db\ActiveRecord
+class Project extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -51,13 +51,12 @@ class Projects extends \yii\db\ActiveRecord
         ];
     }
 
-    public function beforeSave($insert) {
+    public function beforeSave($insert)
+    {
         if($this->isNewRecord) {
             $this->created_at = time();
-            $this->updated_at = time();
-        } else {
-            $this->updated_at = time();
         }
+        $this->updated_at = time();
         return parent::beforeSave($insert);
     }
 

@@ -16,7 +16,7 @@ class Api extends Component
     {
         $this->setHeader($code);
 
-        Yii::$app->response->data  = array('status' => 0, 'error_code' => $code, 'errors' => $message);
+        Yii::$app->response->data  = ['status' => 0, 'error_code' => $code, 'message' => $message];
 
         Yii::$app->end();
     }

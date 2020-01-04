@@ -192,7 +192,7 @@ class DefaultController extends BaseController
         $headers = Yii::$app->getRequest()->getHeaders();
         $access_token = $headers->get('authorization');
 
-        if(!$access_token){
+        if (!$access_token) {
             $access_token = Yii::$app->getRequest()->getQueryParam('x-authorization');
         }
 
@@ -314,7 +314,8 @@ class DefaultController extends BaseController
         $model = new SignupForm();
         $model->attributes = Yii::$app->request->post();
         if (!$model->validate()) {
-        	$message = $model->getFirstErrors();
+        	$errors = $model->getFirstErrors();
+            $message = reset($errors);
             Yii::$app->api->sendFailedResponse($message);
         }
         

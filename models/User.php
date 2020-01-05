@@ -61,7 +61,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        $access_token = AccessTokens::findOne(['token' => $token]);
+        $access_token = AccessToken::findOne(['token' => $token]);
         if (!$access_token)
             return false;
 

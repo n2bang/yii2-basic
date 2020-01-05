@@ -30,9 +30,9 @@ class Project extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['name', 'alias'], 'required'],
             [['status', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'alias'], 'string', 'max' => 255],
+            [['name', 'alias'], 'string', 'min' => 5, 'max' => 255],
         ];
     }
 

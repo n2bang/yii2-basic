@@ -57,7 +57,7 @@ class DefaultController extends BaseController
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['accesstoken', 'refresh-access-token', 'register'],
+                        'actions' => [],
                         'allow' => true,
                         'roles' => ['*'],
                     ],
@@ -69,6 +69,7 @@ class DefaultController extends BaseController
                     'refresh-access-token' => ['POST'],
                     'logout' => ['GET'],
                     'accesstoken' => ['POST'],
+                    'register' => ['POST'],
                 ],
             ],
         ];
@@ -327,7 +328,7 @@ class DefaultController extends BaseController
         $user->setPassword($model->password);
         $user->generateAuthKey();
         $user->generateActivationCode();
-        // var_dump($user->attributes);die;
+
         if ($user->save()) {
             $data = $user->attributes;
             unset($data['auth_key']);

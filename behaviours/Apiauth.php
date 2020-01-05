@@ -60,11 +60,9 @@ class Apiauth extends AuthMethod
                 return $identity;
             }
         }
+
         if ($accessToken !== null) {
-
-            Yii::$app->api->sendFailedResponse('Invalid Access token', 403);
-
-            // $this->handleFailure($response);
+            $this->handleFailure('Invalid Access token');
         }
 
         return null;
@@ -72,7 +70,6 @@ class Apiauth extends AuthMethod
 
     public function beforeAction($action)
     {
-
         if (in_array($action->id, $this->exclude) &&
             !isset($_GET[$this->tokenParam]))
         {
@@ -98,9 +95,6 @@ class Apiauth extends AuthMethod
         } else {
             $this->challenge($response);
             $this->handleFailure($response);
-
-            Yii::$app->api->sendFailedResponse('Invalid Request', 404);
-            //return false;
         }
     }
 

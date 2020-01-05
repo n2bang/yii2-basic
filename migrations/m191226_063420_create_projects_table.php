@@ -16,7 +16,7 @@ class m191226_063420_create_projects_table extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string(255)->notNull(),
             'alias' => $this->string(255),
-            'status' => $this->integer(),
+            'status' => $this->integer()->defaultValue(0),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
         ]);

@@ -2,6 +2,9 @@
 
 return [
     '' => 'site/index',
+    'api/v1/project/create'=>'v1/project/create',
+    'api/v1/project/<id:\d+>'=>'v1/project/get-item',
+    'api/v1/project'=>'v1/project/index',
     'api/v1/docs'=>'v1/default/docs',
     'api/v1/default/json-schema'=>'v1/default/json-schema',
     'api/v1/accesstoken'=>'v1/default/accesstoken',

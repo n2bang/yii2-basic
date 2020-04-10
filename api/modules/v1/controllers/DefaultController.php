@@ -313,7 +313,8 @@ class DefaultController extends BaseController
     public function actionRegister()
     {
         $model = new SignupForm();
-        $model->attributes = Yii::$app->request->post();
+        $post = Yii::$app->request->post();
+        $model->attributes = $post;
         if (!$model->validate()) {
         	$errors = $model->getFirstErrors();
             $message = reset($errors);
@@ -322,9 +323,9 @@ class DefaultController extends BaseController
         
         $user = new User();
         $user->username = $model->username;
-        $user->alias = $model->alias;
+        $user->alias = !empty($model->alias) ? $model->alias : $model->username;
         $user->status = Constant::STATUS_ACTIVE;
-        $user->user_type = $model->user_type;
+        $user->user_type = isset($post['user_type']) ? $model->user_type : Constant::TYPE_USER;
         $user->setPassword($model->password);
         $user->generateAuthKey();
         $user->generateActivationCode();

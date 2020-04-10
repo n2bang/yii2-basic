@@ -70,10 +70,10 @@ class ProjectController extends BaseController
      *     ),
      *     @SWG\Parameter(
      *          type="integer",
-     *          name="offset",
+     *          name="page",
      *          in="query",
-     *          minimum=0,
-     *          description="The (zero-based) offset of the first item in the collection to return",
+     *          minimum=1,
+     *          description="Number of pages in the collection to return",
      *          required=false
      *     ),
      *     @SWG\Parameter(
@@ -82,7 +82,7 @@ class ProjectController extends BaseController
      *          in="query",
      *          minimum=10,
      *          maximum=100,
-     *          description="Numer of projects to return",
+     *          description="Number of projects to return",
      *          required=false
      *     ),
      *     @SWG\Response(
@@ -97,11 +97,15 @@ class ProjectController extends BaseController
      */
     public function actionIndex()
     {
-        $offset = Yii::$app->request->getQueryParam('offset', 0);
-        if (!is_numeric($offset)) $offset = 0;
 
         $limit = Yii::$app->request->getQueryParam('limit', Constant::LIMIT);
         if (!is_numeric($limit)) $limit = Constant::LIMIT;
+
+        $page = Yii::$app->request->getQueryParam('page', 1);
+        if (!is_numeric($page)) $page = 1;
+        
+        $offset = (abs($page) - 1) * $limit;
+        
 
         $model = Project::find()->limit($limit)->offset($offset)->all();
 

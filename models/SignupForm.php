@@ -26,7 +26,7 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            [['username','password', 'alias'],'required'],
+            [['username','password'],'required'],
             ['username', 'trim'],
             ['username', 'unique', 'targetClass' => '\app\models\User', 'message' =>Yii::t('app', 'This username has already been taken')],
             ['username', 'string', 'min' => 6, 'max' => 12],
@@ -34,7 +34,7 @@ class SignupForm extends Model
 
             ['alias', 'trim'],
             ['alias', 'string', 'min' => 6, 'max' => 12],
-            ['alias', 'unique', 'targetClass' => '\app\models\User', 'message' => Yii::t('app', 'This alias has already been taken'), 'on' => 'register'],
+            ['alias', 'unique', 'targetClass' => '\app\models\User', 'message' => Yii::t('app', 'This alias has already been taken')],
             ['alias', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u', 'message' =>  Yii::t('app', 'Alias can contain only A-Za-z0-9_')],
 
             ['password', 'string', 'min' => 6, 'max' => 20],

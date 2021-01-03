@@ -24,6 +24,7 @@
         "yiidoc/yii2-timeago": "^2.0",
         "vxm/yii2-searchable": "^1.0",
         "opay/merchant-cashier-php": "^3.1",
+        "cboden/ratchet": "^0.4.1",
         "sersid/yii2-config": "*"
     },
     "require-dev": {

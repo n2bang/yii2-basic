@@ -20,7 +20,11 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "facebook/webdriver": "^1.7",
         "yii2mod/yii2-swagger": "*",
-        "firebase/php-jwt": "^5.0"
+        "firebase/php-jwt": "^5.0",
+        "yiidoc/yii2-timeago": "^2.0",
+        "vxm/yii2-searchable": "^1.0",
+        "opay/merchant-cashier-php": "^3.1",
+        "sersid/yii2-config": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
@@ -30,7 +34,8 @@
         "codeception/codeception": "^3.1",
         "codeception/base": "^3.1",
         "codeception/verify": "^1.2",
-        "codeception/specify": "^1.2"
+        "codeception/specify": "^1.2",
+        "wataridori/simple-fuzzy-search": "^0.1.1"
     },
     "config": {
         "process-timeout": 1800,

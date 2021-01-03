@@ -61,7 +61,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        // Yii::$app->config->delete('foo');
+        // Yii::$app->config->set('foo', false);
+        // Yii::$app->config->set('foo2', ['bar', 'baz']);
+        // Yii::$app->config->set(['foo3' => 'bar']);
+        $value = Yii::$app->config->get('foo') ?? '1111';
+        var_dump($value);die;
+        return $this->render('index', compact('value'));
     }
 
     /**

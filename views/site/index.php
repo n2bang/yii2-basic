@@ -54,6 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div id="site-index">
     <h1><?= Html::encode($this->title) ?></h1>
+    <div><?= (int)$value ?></div>
     <div class="demo-box-wrap">
         <div class="demo-box pinch">
             <img class="active" src="https://hammerjs.github.io/assets/img/pano-1.jpg">

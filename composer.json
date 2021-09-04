@@ -25,7 +25,9 @@
         "vxm/yii2-searchable": "^1.0",
         "opay/merchant-cashier-php": "^3.1",
         "cboden/ratchet": "^0.4.1",
-        "sersid/yii2-config": "*"
+        "sersid/yii2-config": "*",
+        "xstreamka/yii2-recaptcha-widget": "*",
+        "himiklab/yii2-recaptcha-widget": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

@@ -21,7 +21,7 @@ class BaseController extends Controller
         $behaviors = parent::behaviors();
 
         $behaviors['corsFilter'] = [
-            'class' => \yii\filters\Cors::className(),
+            'class' => \yii\filters\Cors::class,
             'cors' => [
                 'Origin' => ['*'],
                 'Access-Control-Allow-Origin' => ['*'],

@@ -66,7 +66,7 @@ class SiteController extends Controller
         // Yii::$app->config->set('foo2', ['bar', 'baz']);
         // Yii::$app->config->set(['foo3' => 'bar']);
         $value = Yii::$app->config->get('foo') ?? '1111';
-        var_dump($value);die;
+        // var_dump($value);die;
         return $this->render('index', compact('value'));
     }
 

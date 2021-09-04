@@ -6,8 +6,6 @@ use yii\filters\AccessControl;
 use app\behaviours\Verbcheck;
 use app\behaviours\Apiauth;
 use app\components\BaseController;
-
-use yii\helpers\Url;
 use app\models\Project;
 use app\models\Constant;
 
@@ -23,11 +21,11 @@ class ProjectController extends BaseController
 
         return $behaviors + [
             'apiauth' => [
-                'class' => Apiauth::className(),
-                'exclude' => [],
+                'class' => Apiauth::class,
+                'exclude' => ['index'],
             ],
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'only' => [],
                 'rules' => [
                     [
@@ -43,7 +41,7 @@ class ProjectController extends BaseController
                 ],
             ],
             'verbs' => [
-                'class' => Verbcheck::className(),
+                'class' => Verbcheck::class,
                 'actions' => [
                     'create' => ['POST'],
                     'get-item' => ['GET'],
@@ -62,28 +60,28 @@ class ProjectController extends BaseController
      *     consumes={"application/x-www-form-urlencoded"},
      *     tags={"Projects"},
      *     @SWG\Parameter(
-     *          type="string",
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer + token",
-     *          required=true
+     *         type="string",
+     *         name="Authorization",
+     *         in="header",
+     *         description="Bearer + token",
+     *         required=true
      *     ),
      *     @SWG\Parameter(
-     *          type="integer",
-     *          name="page",
-     *          in="query",
-     *          minimum=1,
-     *          description="Number of pages in the collection to return",
-     *          required=false
+     *         type="integer",
+     *         name="page",
+     *         in="query",
+     *         minimum=1,
+     *         description="Number of pages in the collection to return",
+     *         required=false
      *     ),
      *     @SWG\Parameter(
-     *          type="integer",
-     *          name="limit",
-     *          in="query",
-     *          minimum=10,
-     *          maximum=100,
-     *          description="Number of projects to return",
-     *          required=false
+     *         type="integer",
+     *         name="limit",
+     *         in="query",
+     *         minimum=10,
+     *         maximum=100,
+     *         description="Number of projects to return",
+     *         required=false
      *     ),
      *     @SWG\Response(
      *         response=200,
@@ -103,9 +101,9 @@ class ProjectController extends BaseController
 
         $page = Yii::$app->request->getQueryParam('page', 1);
         if (!is_numeric($page)) $page = 1;
-        
+
         $offset = (abs($page) - 1) * $limit;
-        
+
 
         $model = Project::find()->limit($limit)->offset($offset)->all();
 
@@ -121,18 +119,18 @@ class ProjectController extends BaseController
      *     consumes={"application/x-www-form-urlencoded"},
      *     tags={"Projects"},
      *     @SWG\Parameter(
-     *          type="string",
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer + token",
-     *          required=true
+     *         type="string",
+     *         name="Authorization",
+     *         in="header",
+     *         description="Bearer + token",
+     *         required=true
      *     ),
      *     @SWG\Parameter(
-     *          type="integer",
-     *          name="id",
-     *          in="path",
-     *          description="Numeric ID of the project to get",
-     *          required=true
+     *         type="integer",
+     *         name="id",
+     *         in="path",
+     *         description="Numeric ID of the project to get",
+     *         required=true
      *     ),
      *     @SWG\Response(
      *         response=200,
@@ -170,6 +168,13 @@ class ProjectController extends BaseController
      *     tags={"Projects"},
      *     description="The api create a new project",
      *     @SWG\Parameter(
+     *         type="string",
+     *         name="Authorization",
+     *         in="header",
+     *         description="Bearer + token",
+     *         required=true
+     *     ),
+     *     @SWG\Parameter(
      *         name="name",
      *         in="formData",
      *         type="string",
@@ -201,14 +206,14 @@ class ProjectController extends BaseController
      * )
      */
     public function actionCreate() {
-    	$model = new Project();
-    	$model->attributes = Yii::$app->request->post();
-    	if (!$model->validate())
-    	{
-    		$errors = $model->getFirstErrors();
+        $model = new Project();
+        $model->attributes = Yii::$app->request->post();
+        if (!$model->validate())
+        {
+            $errors = $model->getFirstErrors();
             $message = reset($errors);
             Yii::$app->api->sendFailedResponse($message);
-    	}
+        }
 
         if (!isset($model->status))
         {
